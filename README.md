@@ -20,6 +20,22 @@ The function can also be used to evaluate the regularized upper incomplete gamma
 
 The two functions have the relationship `Q(x,a) = 1 - P(x,a)`.
 
+In addition, this package can be used to evaluate the *unregularized* gamma functions. The range of above functions is `[0,1]`, which is not the case fo the *unregularized* versions. The unregularized lower incomplete gamma function is defined as
+
+<div class="equation" align="center" data-raw-text="\gamma(a,x) = \int_0^x t^{a-1} e^{-t} \; dt" data-equation="eq:unreg_lower_incomplete_gamma">
+	<img src="" alt="Equation for the unregularized lower incomplete gamma function.">
+	<br>
+</div>
+
+and the upper unregularized incomplete gamma function is 
+
+<div class="equation" align="center" data-raw-text="\Gamma(a,x)= \int_x^\infty t^{a-1} e^{-t} \; dt" data-equation="eq:unreg_upper_incomplete_gamma">
+	<img src="" alt="Equation for the unregularized upper incomplete gamma function.">
+	<br>
+</div>
+
+The relationship between the two functions is `Γ(a,x) = γ(a,x) + Γ(a)`.
+
 ## Installation
 
 ``` bash
@@ -37,7 +53,7 @@ var gammainc = require( 'compute-gammainc' );
 
 #### gammainc( x, a[, opts] )
 
-Evaluates element-wise the regularized incomplete gamma function. `x` can be a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix). `a` has to be either an `array` or `matrix` of equal dimensions as `x` or a single number. The function returns either an `array` with the same length as the base `array`, a `matrix` with the same dimensions as the base `matrix` or a single number. The domain of the function are the non-negative real numbers for `x` and the positve real numbers for `a`. If supplied a value outside the domain, the function returns `NaN`.
+Evaluates element-wise the regularized incomplete gamma function. `x` can be a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix). `a` has to be either an `array` or `matrix` of equal dimensions as `x` or a single number. The function returns either an `array` with the same length as the base `array`, a `matrix` with the same dimensions as the base `matrix` or a single number. The domain of the function are the non-negative real numbers for `x` and the positve real numbers for `a`. If supplied a value outside the domain, the function returns `NaN`. For both the regularized and unregularized versions of the incomplete gamma function, in this implementation the first argument is `x` and the second argument is the scale factor `a`.
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
