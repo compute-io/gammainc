@@ -393,9 +393,9 @@ This series is evaluated for all inputs `x` and `s` unless `x > 1.1` and `x > s`
 
 To compute the continued fractions, the modified Lentz's method is implemented. For a discussion of this method, see section 5.2 of "Numerical Recipes in C (2nd Ed.): The Art of Scientific Computing".
 
-References: 
-1) Lentz, W. J. (1976). Generating bessel functions in mie scattering calculations using continued fractions. Applied Optics, 15(3), 668–671. doi:10.1364/AO.15.000668
-2) William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. 1992. Numerical Recipes in C (2nd Ed.): The Art of Scientific Computing. Cambridge University Press, New York, NY, USA. 
+**References:** 
+1. Lentz, W. J. (1976). Generating bessel functions in mie scattering calculations using continued fractions. Applied Optics, 15(3), 668–671. doi:10.1364/AO.15.000668
+2. William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. 1992. Numerical Recipes in C (2nd Ed.): The Art of Scientific Computing. Cambridge University Press, New York, NY, USA. 
 
 ## Examples
 
