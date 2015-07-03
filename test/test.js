@@ -183,9 +183,19 @@ describe( 'compute-gammainc', function tests() {
 		assert.closeTo( gammainc( 3, 3 ), 0.5768099, 1e-5 );
 	});
 
+	it( 'should calculate the __lower__ unregularized incomplete gamma function for two numbers', function test() {
+		assert.closeTo( gammainc( 5, 1, {'regularized': false} ), 0.9932621, 1e-5 );
+		assert.closeTo( gammainc( 3, 3, {'regularized': false} ), 1.1536198, 1e-5 );
+	});
+
 	it( 'should calculate the __upper__ incomplete gamma function for two numbers', function test() {
 		assert.closeTo( gammainc( 5, 1, {'tail': 'upper'} ), 1 - 0.9932621, 1e-5 );
 		assert.closeTo( gammainc( 3, 3, {'tail': 'upper'} ), 1 - 0.5768099, 1e-5 );
+	});
+
+	it( 'should calculate the __upper__ unregularized incomplete gamma function for two numbers', function test() {
+		assert.closeTo( gammainc( 5, 1, {'tail': 'upper','regularized': false} ), 1 - 0.9932621, 1e-5 );
+		assert.closeTo( gammainc( 3, 3, {'tail': 'upper','regularized': false} ), 0.84638, 1e-5 );
 	});
 
 	it( 'should calculate the incomplete gamma function of a scalar and an array', function test() {

@@ -40,6 +40,21 @@ describe( 'number gammainc', function tests() {
 		assert.closeTo( gammainc.upper( 2, 9 ), 0.9997625526717389, 1e-4 );
 	});
 
+	it( 'should evaluate the unregularized lower incomplete gamma function', function test() {
+		assert.closeTo( gammainc.lower( 4, 2, false ), 0.9084218, 1e-4 );
+		assert.closeTo( gammainc.lower( 0.5, 0.5, false ), 1.210036, 1e-4 );
+		assert.closeTo( gammainc.lower( 1, 3, false ), 0.1606028, 1e-4 );
+		assert.closeTo( gammainc.lower( 0.5, 0.8, false ), 0.5811743, 1e-4 );
+	});
+
+	it( 'should evaluate the unregularized upper incomplete gamma function', function test() {
+		assert.closeTo( gammainc.upper( 4, 2, false ), 0.09157819, 1e-4 );
+		assert.closeTo( gammainc.upper( 0.5, 0.5, false ), 0.5624182, 1e-4 );
+		assert.closeTo( gammainc.upper( 1, 3, false ), 1.839397, 1e-4 );
+		assert.closeTo( gammainc.upper( 0.5, 0.8, false ), 0.5830554, 1e-4 );
+		assert.closeTo( gammainc.upper( 2, 9, false ), 40310.42612, 1e-4 );
+	});
+
 	it( 'should return NaN if provided x < 0 or s <= 0', function test() {
 		var val;
 

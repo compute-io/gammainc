@@ -86,6 +86,30 @@ describe( 'validate', function tests() {
 		}
 	});
 
+	it( 'should return an error if provided a regulraized option which is not a boolean primitive', function test() {
+		var values, err;
+
+		values = [
+			'5',
+			5,
+			new Boolean( true ),
+			undefined,
+			null,
+			NaN,
+			[],
+			{},
+			function(){}
+		];
+
+		for ( var i = 0; i < values.length; i++ ) {
+			err = validate( {}, {
+				'regularized': values[ i ]
+			});
+			assert.isTrue( err instanceof TypeError );
+		}
+	});
+
+
 	it( 'should return an error if provided a path option which is not a string primitive', function test() {
 		var values, err;
 
@@ -185,7 +209,8 @@ describe( 'validate', function tests() {
 			'path': 'x/y',
 			'sep': '/',
 			'dtype': 'int32',
-			'tail': 'lower'
+			'tail': 'lower',
+			'regularized': true
 		});
 
 		assert.isNull( err );
