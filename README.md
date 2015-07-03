@@ -7,14 +7,14 @@ gammainc
 Computes the regularized lower incomplete gamma function:
 
 <div class="equation" align="center" data-raw-text="P( x, a ) = \frac{\gamma(a,x)}{\Gamma(a)} = \frac{1}{\Gamma(a)} \int_0^x t^{a-1} e^{-t} \; dt" data-equation="eq:lower_incomplete_gamma">
-	<img src="" alt="Equation for the regularized lower incomplete gamma function.">
+	<img src="https://cdn.rawgit.com/compute-io/gammainc/68d3e61dfeace303cffe14b75c5b249ba75b5281/docs/img/eqn1.svg" alt="Equation for the regularized lower incomplete gamma function.">
 	<br>
 </div>
 
 The function can also be used to evaluate the regularized upper incomplete gamma function, which is defined as follows:  
 
 <div class="equation" align="center" data-raw-text="Q( x, a ) = \frac{\Gamma(a,x)}{\Gamma(a)} = \frac{1}{\Gamma(a)} \int_x^\infty t^{a-1} e^{-t} \; dt" data-equation="eq:upper_incomplete_gamma">
-	<img src="" alt="Equation for the regularized upper incomplete gamma function.">
+	<img src="https://cdn.rawgit.com/compute-io/gammainc/68d3e61dfeace303cffe14b75c5b249ba75b5281/docs/img/eqn2.svg" alt="Equation for the regularized upper incomplete gamma function.">
 	<br>
 </div>
 
