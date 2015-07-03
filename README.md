@@ -38,6 +38,7 @@ var gammainc = require( 'compute-gammainc' );
 #### gammainc( x, a[, opts] )
 
 Evaluates element-wise the regularized incomplete gamma function. `x` can be a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix). `a` has to be either an `array` or `matrix` of equal dimensions as `x` or a single number. The function returns either an `array` with the same length as the base `array`, a `matrix` with the same dimensions as the base `matrix` or a single number. The domain of the function are the non-negative real numbers for `x` and the positve real numbers for `a`. If supplied a value outside the domain, the function returns `NaN`.
+
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
 	data,
@@ -102,6 +103,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 *	__tail__:`string` indicating whether to evaluate the `'lower'` or `'upper'` incomplete gamma function. Default: `'lower'`.
+*	__regularized__: `boolean` indicating if the `function` should compute the *regularized* or *unregularized* incomplete gamma functions. Default: `true`.
 
 By default, the function evaluates the *lower* regularized incomplete gamma function, `P(x,a)`. To evaluate the *upper* function instead, i.e. `Q(x,a)`, set the `tail` option to `'upper'`.
 
@@ -116,9 +118,23 @@ u = gammainc( 1, 2, {
 });
 // returns ~0.7358
 
-bool = ( l + u === 1 ) 
+bool = ( l + u === 1 )
 // returns true
-``` 
+```
+
+To evaluate the *unregularized* incomplete gamma functions, set the `regularized` option to `false`.
+
+```javascript
+var r, u;
+
+r = gammainc( 7, 5 );
+// returns 0.8270
+
+u = gammainc( 7, 5, {
+	'regularized': false
+});
+// returns 19.8482
+```
 
 For object `arrays`, provide an accessor `function` for accessing `array` values.
 
@@ -209,18 +225,19 @@ By default, when provided a [`typed array`](https://developer.mozilla.org/en-US/
 ``` javascript
 var data, out;
 
-data = new Int8Array( [ 1, 2, 3 ] );
+data = new Int8Array( [ 4, 5, 6 ] );
 
-out = gammainc( data, 2, {
-	'dtype': 'int32'
+out = gammainc( data, 5, {
+	'dtype': 'int32',
+	'regularized': false
 });
-// returns Int32Array( [1,4,9] )
+// returns Int32Array( [8,13,17] )
 
 // Works for plain arrays, as well...
-out = gammainc( [ 1, 2, 3 ], 2, {
+out = gammainc( [ 4, 5, 6 ], 5, {
 	'dtype': 'uint8'
 });
-// returns Uint8Array( [0,0,0] )
+// returns Uint8Array( [8,13,17] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure, set the `copy` option to `false`.
@@ -343,7 +360,72 @@ bool = ( mat === out );
 ## Examples
 
 ``` javascript
-var gammainc = require( 'compute-gammainc' );
+var matrix = require( 'dstructs-matrix' ),
+	gammainc = require( 'compute-gammainc' );
+
+var data,
+	mat,
+	out,
+	tmp,
+	i;
+
+// ----
+// Plain arrays...
+data = new Array( 100 );
+for ( i = 0; i < data.length; i++ ) {
+	data[ i ] = Math.random();
+}
+out = gammainc( data, 1 );
+
+// Object arrays (accessors)...
+function getValue( d ) {
+	return d.x;
+}
+for ( i = 0; i < data.length; i++ ) {
+	data[ i ] = {
+		'x': data[ i ]
+	};
+}
+out = gammainc( data, 1, {
+	'accessor': getValue
+});
+
+// Deep set arrays...
+for ( i = 0; i < data.length; i++ ) {
+	data[ i ] = {
+		'x': [ i, data[ i ].x ]
+	};
+}
+out = gammainc( data, 1, {
+	'path': 'x/1',
+	'sep': '/'
+});
+
+// Typed arrays...
+data = new Float64Array( 100 );
+for ( i = 0; i < data.length; i++ ) {
+	data[ i ] = Math.random();
+}
+tmp = gammainc( data, 1 );
+out = '';
+for ( i = 0; i < data.length; i++ ) {
+	out += tmp[ i ];
+	if ( i < data.length-1 ) {
+		out += ',';
+	}
+}
+
+// Matrices...
+mat = matrix( data, [10,10], 'float64' );
+out = gammainc( mat, 1 );
+console.log( 'Matrix: %s\n', out.toString() );
+
+
+// ----
+// Matrices (custom output data type)...
+out = gammainc( mat, 1, {
+	'dtype': 'float32'
+});
 ```
 
 To run the example code from the top-level application directory,
