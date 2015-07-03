@@ -380,14 +380,14 @@ To evaluate the regularized *lower* incomplete gamma function, this package uses
 
 <div class="equation" align="center" data-raw-text="
     P(x, a) = \frac{1}{\Gamma(a)}\sum_{k=0}^\infty \frac{x^a e^{-x} x^k}{a(a+1)...(a+k)} " data-equation="eq:power_series">
-	<img src="" alt="Power series representation for the lower incomplete gamma function.">
+	<img src="https://cdn.rawgit.com/compute-io/gammainc/f38461aaa66adafa47885a4f79ef393d8d140bdc/docs/img/eqn5.svg" alt="Power series representation for the lower incomplete gamma function.">
 	<br>
 </div>
 
 This series is evaluated for all inputs `x` and `s` unless `x > 1.1` and `x > s`, in which case the function is evaluated using the upper incomplete gamma function as `P(x,s) = 1 - Q(x,s)`. To evaluate the upper incomplete gamma function, [Gauss' continued fraction expansion](https://en.wikipedia.org/wiki/Gauss%27s_continued_fraction) is used:
 
-<div class="equation" align="center" data-raw-text="Q(x, a) = \frac{1}{\Gamma(a)}\cfrac{x^a e^{-x}}{1+x-a+ \cfrac{a-1}{3+x-a+ \cfrac{2(a-2)}{5+x-a+ \cfrac{3(a-3)} {7+x-a+ \cfrac{4(a-4)}{9+x-a+ \ddots}}}}} " data-equation="eq:power_series">
-	<img src="" alt="Power series representation for the lower incomplete gamma function.">
+<div class="equation" align="center" data-raw-text="Q(x, a) = \frac{1}{\Gamma(a)}\cfrac{x^a e^{-x}}{1+x-a+ \cfrac{a-1}{3+x-a+ \cfrac{2(a-2)}{5+x-a+ \cfrac{3(a-3)} {7+x-a+ \cfrac{4(a-4)}{9+x-a+ \ddots}}}}} " data-equation="eq:continued_fraction">
+	<img src="https://cdn.rawgit.com/compute-io/gammainc/f38461aaa66adafa47885a4f79ef393d8d140bdc/docs/img/eqn6.svg" alt="Continued fraction expansion for the upper incomplete gamma function.">
 	<br>
 </div>
 
