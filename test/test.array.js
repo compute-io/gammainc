@@ -207,7 +207,7 @@ describe( 'array gammainc', function tests() {
 
 	});
 
-	it( 'should throw an error if provided an exponent array which is not of equal length to the input array', function test() {
+	it( 'should throw an error if provided a scale array which is not of equal length to the input array', function test() {
 		expect( foo ).to.throw( Error );
 		function foo() {
 			gammainc( [], [1,2], [1,2,3] );

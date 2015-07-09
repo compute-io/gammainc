@@ -238,17 +238,17 @@ describe( 'compute-gammainc', function tests() {
 	it( 'should calculate the incomplete gamma function of a scalar and a matrix and cast to a different dtype', function test() {
 		var data, actual, expected;
 		data = matrix( new Int8Array( [ 1,2,3,4 ] ), [2,2] );
-		actual = gammainc( 2, data, {
-			'dtype': 'int32'
+		actual = gammainc( data, 2, {
+			'dtype': 'float32'
 		});
-		expected = matrix( new Int32Array( [
+		expected = matrix( new Float32Array( [
 			GAMMAINC( 1, 2 ),
 			GAMMAINC( 2, 2 ),
 			GAMMAINC( 3, 2 ),
 			GAMMAINC( 4, 2 ),
 		]), [2,2] );
 
-		assert.strictEqual( actual.dtype, 'int32' );
+		assert.strictEqual( actual.dtype, 'float32' );
 		assert.deepEqual( actual.data, expected.data );
 	});
 

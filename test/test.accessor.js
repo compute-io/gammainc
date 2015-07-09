@@ -274,7 +274,7 @@ describe( 'accessor gammainc', function tests() {
 
 	});
 
-	it( 'should throw an error if provided an array of exponents which is not of equal length to the base array', function test() {
+	it( 'should throw an error if provided an array of scale factors which is not of equal length to the input array', function test() {
 		expect( foo ).to.throw( Error );
 		function foo() {
 			gammainc( [], [1,2], [1,2,3], getValue );
@@ -284,7 +284,7 @@ describe( 'accessor gammainc', function tests() {
 		}
 	});
 
-	it( 'should throw an error if provided a typed array of exponents which is not of equal length to the base array', function test() {
+	it( 'should throw an error if provided a typed array of scale factors which is not of equal length to the input array', function test() {
 		expect( foo ).to.throw( Error );
 		function foo() {
 			gammainc( [], [1,2], new Int32Array( [1,2,3] ), getValue );
