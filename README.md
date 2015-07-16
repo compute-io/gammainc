@@ -251,7 +251,8 @@ out = gammainc( data, 5, {
 
 // Works for plain arrays, as well...
 out = gammainc( [ 4, 5, 6 ], 5, {
-	'dtype': 'uint8'
+	'dtype': 'uint8',
+	'regularized': false
 });
 // returns Uint8Array( [8,13,17] )
 ```
