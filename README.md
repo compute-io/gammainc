@@ -2,9 +2,9 @@ gammainc
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Incomplete gamma function.
+> [Incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function).
 
-Computes the regularized lower incomplete gamma function:
+Computes the regularized lower [incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function):
 
 <div class="equation" align="center" data-raw-text="P( x, a ) = \frac{\gamma(a,x)}{\Gamma(a)} = \frac{1}{\Gamma(a)} \int_0^x t^{a-1} e^{-t} \; dt" data-equation="eq:lower_incomplete_gamma">
 	<img src="https://cdn.rawgit.com/compute-io/gammainc/68d3e61dfeace303cffe14b75c5b249ba75b5281/docs/img/eqn1.svg" alt="Equation for the regularized lower incomplete gamma function.">
@@ -53,7 +53,7 @@ var gammainc = require( 'compute-gammainc' );
 
 #### gammainc( x, a[, opts] )
 
-Evaluates element-wise the regularized incomplete gamma function. `x` can be a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix). `a` has to be either an `array` or `matrix` of equal dimensions as `x` or a single number. The function returns either an `array` with the same length as the base `array`, a `matrix` with the same dimensions as the base `matrix` or a single number. The domain of the function are the non-negative real numbers for `x` and the positve real numbers for `a`. If supplied a value outside the domain, the function returns `NaN`. For both the regularized and unregularized versions of the incomplete gamma function, in this implementation the first argument is `x` and the second argument is the scale factor `a`.
+Evaluates element-wise the regularized incomplete gamma function. `x` can be a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix). `a` has to be either an `array` or `matrix` of equal dimensions as `x` or a single number. The function returns either an `array` with the same length as the `x` `array`, a `matrix` with the same dimensions as the `x` `matrix` or a single number. The domain of the function are the non-negative real numbers for `x` and the positve real numbers for `a`. If supplied a value outside the domain, the function returns `NaN`. For both the regularized and unregularized versions of the incomplete gamma function, in this implementation the first argument is `x` and the second argument is the scale factor `a`.
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -170,13 +170,13 @@ function getValue( d, i ) {
 	return d.x;
 }
 
-var out = power( data, 2, {
+var out = gammainc( data, 2, {
 	'accessor': getValue
 });
 // returns [ ~0.0951, ~0.1812, ~0.3934, ~0.6321, ~0.8646, ~0.9502, ~0.9816, ~0.9932 ]
 ```
 
-When exponentiating values between two object `arrays`, provide an accessor `function` which accepts `3` arguments.
+When evaluating the [incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function) for values between two object `arrays`, provide an accessor `function` which accepts `3` arguments.
 
 ``` javascript
 var data = [
@@ -202,7 +202,7 @@ function getValue( d, i, j ) {
 	return d.x;
 }
 
-var out = power( data, arr, {
+var out = gammainc( data, arr, {
 	'accessor': getValue
 });
 // returns [ 0, ~0.6321, ~0.5940, ~0.5768, ~0.5665 ]
