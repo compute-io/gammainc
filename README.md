@@ -1,6 +1,6 @@
 gammainc
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > [Incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function).
 
@@ -27,7 +27,7 @@ In addition, this package can be used to evaluate the *unregularized* gamma func
 	<br>
 </div>
 
-and the upper unregularized incomplete gamma function is 
+and the upper unregularized incomplete gamma function is
 
 <div class="equation" align="center" data-raw-text="\Gamma(a,x)= \int_x^\infty t^{a-1} e^{-t} \; dt" data-equation="eq:unreg_upper_incomplete_gamma">
 	<img src="https://cdn.rawgit.com/compute-io/gammainc/edb25812443645fa97017137b1f84708a84cea2c/docs/img/eqn4.svg" alt="Equation for the unregularized upper incomplete gamma function.">
@@ -394,9 +394,9 @@ This series is evaluated for all inputs `x` and `s` unless `x > 1.1` and `x > s`
 
 To compute the continued fractions, the modified Lentz's method is implemented. For a discussion of this method, see section 5.2 of "Numerical Recipes in C (2nd Ed.): The Art of Scientific Computing".
 
-**References:** 
+**References:**
 - Lentz, W. J. (1976). Generating bessel functions in mie scattering calculations using continued fractions. Applied Optics, 15(3), 668–671. doi:10.1364/AO.15.000668
-- William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. 1992. Numerical Recipes in C (2nd Ed.): The Art of Scientific Computing. Cambridge University Press, New York, NY, USA. 
+- William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. 1992. Numerical Recipes in C (2nd Ed.): The Art of Scientific Computing. Cambridge University Press, New York, NY, USA.
 
 ## Examples
 
@@ -521,8 +521,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/compute-io/gammainc/master.svg
 [travis-url]: https://travis-ci.org/compute-io/gammainc
 
-[coveralls-image]: https://img.shields.io/coveralls/compute-io/gammainc/master.svg
-[coveralls-url]: https://coveralls.io/r/compute-io/gammainc?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/compute-io/gammainc/master.svg
+[codecov-url]: https://codecov.io/github/compute-io/gammainc?branch=master
 
 [dependencies-image]: http://img.shields.io/david/compute-io/gammainc.svg
 [dependencies-url]: https://david-dm.org/compute-io/gammainc
