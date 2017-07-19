@@ -34,7 +34,7 @@ and the upper unregularized incomplete gamma function is
 	<br>
 </div>
 
-The relationship between the two functions is `Γ(a,x) = γ(a,x) + Γ(a)`.
+The relationship between the two functions is `γ(a,x) + Γ(a,x) = Γ(a)`.
 
 ## Installation
 
